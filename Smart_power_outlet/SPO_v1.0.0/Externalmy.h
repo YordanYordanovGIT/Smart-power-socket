@@ -29,5 +29,6 @@ class Externalmy {
     void dispText();
     void checkBTN();
     void scrollText();
+    void test(String txt);
 };
 #endif

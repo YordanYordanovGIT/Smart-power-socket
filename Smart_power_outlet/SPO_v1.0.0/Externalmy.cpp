@@ -49,3 +49,13 @@ void Externalmy::rel(int val)
   digitalWrite(REL,val);
   _rel = val;
 }
+
+void Externalmy::test(String txt)
+{
+  d.clearDisplay();
+  d.setTextColor(WHITE); // or BLACK);
+  d.setTextSize(1);
+  d.setCursor(0, 0);
+  d.print(txt);
+  d.display();
+}
