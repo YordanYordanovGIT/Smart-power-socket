@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta  name="viewport" content="width=device-width, initial-scale=1.0">
+<meta  http-equiv="refresh" content="2; URL=file:///C:/Github/Smart-power-socket/Smart_power_outlet/web.html">
+<style>
+         html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}
+        .button { background-color: #0d68bf; border: none; color: #ffffff; padding: 10px 40px;
+                          text-decoration: none; font-size: 20px; margin: 2px; cursor: pointer;}
+		.pass { position: relative; font-family: Helvetica; margin-top: 20px; font-size:16px; }
+		.centered { vertical-align: middle; margin-right: 50px; }
+		.displayText { vertical-align: middle; resize: none;}
+					  
+</style>
+</head>     
+
+<body style="background-color:#F4F6F6;">
+
+<h1 style="color:#c47724;">
+Smart socket
+</h1>
+
+<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+
+
+  <form action="/set" method="get">	
+    <img src="https://image.flaticon.com/icons/svg/2922/2922379.svg" alt="Socket image" class="centered" width="120" height="120">
+    <button type="submit" name="OFF" class="button">ON</button><br><br>
+  </form>
+  <form action="/set" method="get">	
+    <textarea name="textarea" class="displayText" style="width:250px;height:150px;">Pesho</textarea>
+    <button type="submit" class="button">Set</button>
+  </form>
+
+</body>
+</html>
