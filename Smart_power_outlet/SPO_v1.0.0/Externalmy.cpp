@@ -2,9 +2,11 @@
 Adafruit_SSD1306 d(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 void Externalmy::init() {
-  pinMode(LED, OUTPUT);
-  pinMode(REL, OUTPUT);
+  pinMode(LED, OUTPUT); //Led
+  pinMode(REL, OUTPUT); //Relay
   pinMode(BTN, INPUT);
+  Externalmy::instance = this;
+  Externalmy::attachTheInterrupt();
   d.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C addr 0x3D (for the 128x64)
   d.display();
 }
@@ -19,6 +21,7 @@ void Externalmy::power(int val)
 void Externalmy::loading()
 {
   //TO DO: Display the loading screen
+
 }
 
 void Externalmy::dispText()
@@ -34,19 +37,29 @@ void Externalmy::scrollText()
 void Externalmy::checkBTN()
 {
   //TO DO: Check if the button is pressed or not
+  if (_power == 1)
+  {
+    power(0);
+    _power = 0;
+  }
+  else
+  {
+    power(1);
+    _power = 1;
+  }
 }
 
 void Externalmy::led(int val)
 {
   //TO DO: Turn on/off the led
-  digitalWrite(LED,val);
+  digitalWrite(LED, val);
   _led = val;
 }
 
 void Externalmy::rel(int val)
 {
   //TO DO: Turn on/off the relay
-  digitalWrite(REL,val);
+  digitalWrite(REL, val);
   _rel = val;
 }
 
