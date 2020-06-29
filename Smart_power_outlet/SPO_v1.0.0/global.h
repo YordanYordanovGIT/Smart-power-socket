@@ -4,6 +4,7 @@
 #include "WiFimy.h"
 #include "Externalmy.h"
 #include "HTTPmy.h"
+#include "EEPROMmy.h"
 
 class global {
   private:
@@ -11,6 +12,7 @@ class global {
     WiFimy wifi;
     HTTPmy http;
     Externalmy ext;
+    EEPROMmy mem;
     
     void init();
 };
