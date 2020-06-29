@@ -1,12 +1,22 @@
 #include "Externalmy.h"
 Adafruit_SSD1306 d(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+unsigned long lastPressTime = 0;
+const int btnTimeout = 200;
+
+//========== interrupt routine =============
+static Externalmy * instance;
+static void ICACHE_RAM_ATTR btnFuncStat() {
+  instance->checkBTN();
+}
+//==========================================
+
 void Externalmy::init() {
+  instance = this;
   pinMode(LED, OUTPUT); //Led
   pinMode(REL, OUTPUT); //Relay
   pinMode(BTN, INPUT);
-  Externalmy::instance = this;
-  Externalmy::attachTheInterrupt();
+  attachInterrupt(digitalPinToInterrupt(BTN), btnFuncStat, RISING);
   d.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C addr 0x3D (for the 128x64)
   d.display();
 }
@@ -37,15 +47,20 @@ void Externalmy::scrollText()
 void Externalmy::checkBTN()
 {
   //TO DO: Check if the button is pressed or not
-  if (_power == 1)
+  if (millis() < lastPressTime)
+    lastPressTime = millis() - (unsigned long)1 - (unsigned long)btnTimeout;
+
+  if (millis() - lastPressTime > btnTimeout)
   {
-    power(0);
-    _power = 0;
-  }
-  else
-  {
-    power(1);
-    _power = 1;
+    if (_power == 1) {
+      power(0);
+      _power = 0;
+    }
+    else {
+      power(1);
+      _power = 1;
+    }
+    lastPressTime = millis();
   }
 }
 

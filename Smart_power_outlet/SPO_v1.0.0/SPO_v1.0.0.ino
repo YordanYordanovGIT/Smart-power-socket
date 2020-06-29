@@ -15,5 +15,4 @@ void setup() {
 void loop() {
   if(g.wifi.wifiConnected == 1)
     g.http.update();
-    g.ext.checkBTN();
 }

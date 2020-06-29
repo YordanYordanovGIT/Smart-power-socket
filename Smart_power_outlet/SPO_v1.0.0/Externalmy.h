@@ -17,18 +17,9 @@ class Externalmy {
     int _led = 0;
     int _rel = 0;
     int _btn = 0;
-    static Externalmy * instance;
-    
+
     void led(int val);
     void rel(int val);
-
-    void attachTheInterrupt() {
-      attachInterrupt(digitalPinToInterrupt(BTN), btnFuncStat, FALLING);
-    }
-
-    static void btnFuncStat() {
-      instance->checkBTN();
-    }
   public:
     int _power;
 
@@ -40,4 +31,5 @@ class Externalmy {
     void scrollText();
     void test(String txt);
 };
+
 #endif
