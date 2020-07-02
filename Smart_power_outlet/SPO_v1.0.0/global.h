@@ -4,6 +4,7 @@
 #include "WiFimy.h"
 #include "Externalmy.h"
 #include "HTTPmy.h"
+#include "MQTTmy.h"
 
 class global {
   private:
@@ -11,6 +12,7 @@ class global {
     WiFimy wifi;
     HTTPmy http;
     Externalmy ext;
+    MQTTmy mqtt;
     
     void init();
 };

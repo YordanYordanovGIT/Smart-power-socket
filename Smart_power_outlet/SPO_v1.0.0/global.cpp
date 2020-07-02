@@ -6,4 +6,5 @@ void global::init()
   wifi.Setstation("milmar","70000000");
   //wifi.Setstation("Students","sedniuchi");
   http.init(ext, wifi.ip);
+  mqtt.init(ext);
 }
