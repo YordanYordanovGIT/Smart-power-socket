@@ -49,11 +49,11 @@ void Externalmy::loading()
   d.setCursor(7, 5);
   //printing the name
   d.print("Smart power socket"); //18px
-  d.setCursor(1, 28);
+  d.setCursor(3, 28);
   d.print("from Yordan Yordanov"); //20px
-  d.setCursor(2, 38);
+  d.setCursor(4, 38);
   d.print("Anton Georgiev and"); //18px
-  d.setCursor(2, 48);
+  d.setCursor(4, 48);
   d.print("Kristiyan Petkov");  //17px
   d.display();
   delay(5000);
@@ -62,6 +62,10 @@ void Externalmy::loading()
 void Externalmy::wifi(String wifi, String ip)
 {
   //TO DO: Display the wifi screen
+  if (wifi == "") {
+    wifi = "None";
+    ip = "None";
+  }
   d.clearDisplay();
   d.setTextColor(WHITE); // or BLACK);
   d.setTextSize(1);

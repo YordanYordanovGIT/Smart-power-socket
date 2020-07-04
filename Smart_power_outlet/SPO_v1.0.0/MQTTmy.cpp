@@ -43,31 +43,35 @@ void MQTTmy::callback (char* topic, unsigned char* payload, unsigned int length)
   Serial.print("Command: ");
 
   char cmd;
-  String message;
+  String message = "";
 
   for (int i = 0; i < length; i++)
   {
-    message += char(payload[i]);
+    message += (char)payload[i];
   }
 
   cmd = message[0];
+  Serial.println(message);
+
   switch (cmd) {
-    case 'N': {
+    case 'N':
         ext -> power(1);
         break;
-      }
-    case 'F': {
+    case 'F':
         ext -> power(0);
         break;
-      }
-    case 'D': {
-        message = message.substring(1, message.length() - 1);
-        eep -> saveToMem(message);
-      }
+    case 'D':
+        if (message.length() > 1) {
+          message = message.substring(1);
+          eep -> saveToMem(message);
+        }
+        break;
     case 'R': {
         ESP.restart();
+        break;
       }
+    default:
+      Serial.println("No such command!");
+      break;
   }
-
-  Serial.println(cmd);
 }

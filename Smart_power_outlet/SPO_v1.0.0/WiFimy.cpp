@@ -1,8 +1,5 @@
 #include "WiFimy.h"
 
-#define wifi_Name "Teachers"
-#define wifi_Pass "1020304050"
-
 void WiFimy::Setstation() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(wifi_Name, wifi_Pass);
