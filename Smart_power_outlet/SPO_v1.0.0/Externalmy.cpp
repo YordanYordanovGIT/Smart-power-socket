@@ -130,7 +130,7 @@ void Externalmy::scrollText()
   //TO DO: Read the text from the EEPROM and scroll it
   cursor -= 1;
   dispText(mem->textNoNL, cursor, 18, 2, 1);
-  if (cursor == -1 - mem->text.length() * 11) {
+  if (cursor == - mem->text.length() * 12) {
     scrollRepsLeft -= 1;
     cursor = 128;
   }
