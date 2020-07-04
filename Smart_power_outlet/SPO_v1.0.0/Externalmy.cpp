@@ -5,11 +5,11 @@ unsigned long lastPressTime = 0;
 const int btnTimeout = 200;
 
 unsigned long stillModeStart = 0;
-const int stillModeTime = 3000;
+const int stillModeTime = StillModeTime;
 int stillModeEnabled = 0;
 
 unsigned long stillAnimStart = 0;
-const int stillAnimTime = 15000;
+const int stillAnimTime = StillAnimTime;
 int stillAnimEnabled = 0;
 
 //========== interrupt routine =============
@@ -61,16 +61,16 @@ void Externalmy::loading()
 
 void Externalmy::wifi(String wifi, String ip)
 {
-  //TO DO: Display the loading screen
+  //TO DO: Display the wifi screen
   d.clearDisplay();
   d.setTextColor(WHITE); // or BLACK);
   d.setTextSize(1);
-  d.setCursor(0, 10);
+  d.setCursor(5, 7);
   d.print("WiFi: " + wifi);
-  d.setCursor(0, 22);
+  d.setCursor(5, 22);
   d.print("IP: " + ip);
   d.display();
-  delay(5000);
+  delay(15000);
 }
 
 void Externalmy::dispText(String txt, int x, int y, int size, int scrolling)
@@ -88,7 +88,7 @@ void Externalmy::dispText(String txt, int x, int y, int size, int scrolling)
 void Externalmy::update() {
   if (_scrollAllowed && !stillModeEnabled) {
     if (scrollRepsLeft == 0 && !stillAnimEnabled) {
-      scrollRepsLeft = 5;
+      scrollRepsLeft = ScrollReps;
       stillAnimEnabled = 1;
       stillAnimStart = millis();
     }
@@ -137,7 +137,7 @@ void Externalmy::scrollAllowed(int a) {
   if (a == 0) {
     stillModeEnabled = 1;
     cursor = 128;
-    scrollRepsLeft = 5;
+    scrollRepsLeft = ScrollReps;
     update();
   }
 }

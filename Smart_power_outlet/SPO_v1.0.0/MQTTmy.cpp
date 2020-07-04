@@ -64,6 +64,9 @@ void MQTTmy::callback (char* topic, unsigned char* payload, unsigned int length)
         message = message.substring(1, message.length() - 1);
         eep -> saveToMem(message);
       }
+    case 'R': {
+        ESP.restart();
+      }
   }
 
   Serial.println(cmd);
