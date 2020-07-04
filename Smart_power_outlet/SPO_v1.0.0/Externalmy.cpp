@@ -9,7 +9,7 @@ const int stillModeTime = 3000;
 int stillModeEnabled = 0;
 
 unsigned long stillAnimStart = 0;
-const int stillAnimTime = 5000;
+const int stillAnimTime = 15000;
 int stillAnimEnabled = 0;
 
 //========== interrupt routine =============
@@ -97,7 +97,7 @@ void Externalmy::scrollText()
   //TO DO: Read the text from the EEPROM and scroll it
   cursor -= 1;
   dispText(mem->textNoNL, cursor, 18, 2, 1);
-  if (cursor == -127 - mem->text.length() * 11) {
+  if (cursor == -1 - mem->text.length() * 11) {
     scrollRepsLeft -= 1;
     cursor = 128;
   }
