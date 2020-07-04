@@ -22,6 +22,7 @@ void MQTTmy::init(Externalmy external) {
 
 int wifiConnected = 1;
 unsigned int previousWifiTime = 0;
+String message;
 int cmd;
 
 
@@ -29,10 +30,12 @@ void MQTTmy::cmdt() {
  
     if (mqttClient.subscribe("/smartsocket1/ctrl")) {
       Serial.println("Subscribed");
+      
     }
     else {
       Serial.println("Not subscribed");
     }
+    cmd = (int)message[0];
     switch (cmd) {
       case 'N': {
           ext.power(1);
@@ -42,9 +45,8 @@ void MQTTmy::cmdt() {
           ext.power(0);
           break;
         }
-      default: {
-        //TO DO Message
-          break;
+      case 'D': {
+       message = message.substring(1,message.length());
         }
         }
 
@@ -58,7 +60,7 @@ static void callback (char* topic, unsigned char* payload, unsigned int lenght) 
   Serial.print("Command: ");
   for (int i = 0; i < lenght; i++)
   {
-    cmd = char(payload[i]);
+    message += char(payload[i]);
   }
  
   Serial.println("");
