@@ -41,6 +41,22 @@ void Externalmy::power(int val)
 void Externalmy::loading()
 {
   //TO DO: Display the loading screen
+  d.clearDisplay();
+  //set text size and text color
+  d.setTextColor(WHITE); // or BLACK);
+  d.setTextSize(1);
+  //set the delay of pixels where the text will be print
+  d.setCursor(7, 5);
+  //printing the name
+  d.print("Smart power socket"); //18px
+  d.setCursor(1, 28);
+  d.print("from Yordan Yordanov"); //20px
+  d.setCursor(2, 38);
+  d.print("Anton Georgiev and"); //18px
+  d.setCursor(2, 48);
+  d.print("Kristiyan Petkov");  //17px
+  d.display();
+  delay(5000);
 
 }
 
