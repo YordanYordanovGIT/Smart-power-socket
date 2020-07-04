@@ -57,7 +57,20 @@ void Externalmy::loading()
   d.print("Kristiyan Petkov");  //17px
   d.display();
   delay(5000);
+}
 
+void Externalmy::wifi(String wifi, String ip)
+{
+  //TO DO: Display the loading screen
+  d.clearDisplay();
+  d.setTextColor(WHITE); // or BLACK);
+  d.setTextSize(1);
+  d.setCursor(0, 10);
+  d.print("WiFi: " + wifi);
+  d.setCursor(0, 22);
+  d.print("IP: " + ip);
+  d.display();
+  delay(5000);
 }
 
 void Externalmy::dispText(String txt, int x, int y, int size, int scrolling)

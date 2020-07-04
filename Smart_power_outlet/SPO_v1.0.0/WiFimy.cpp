@@ -1,6 +1,9 @@
 #include "WiFimy.h"
 
-void WiFimy::Setstation(char* wifi_Name, char* wifi_Pass) {
+#define wifi_Name "Teachers"
+#define wifi_Pass "1020304050"
+
+void WiFimy::Setstation() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(wifi_Name, wifi_Pass);
   WiFi.persistent(false);
@@ -18,6 +21,7 @@ void WiFimy::Setstation(char* wifi_Name, char* wifi_Pass) {
   {
     IPAddress locIP = WiFi.localIP();
     ip = String(locIP[0]) + "." + String(locIP[1]) + "." + String(locIP[2]) + "." + String(locIP[3]);
+    wifiName = wifi_Name;
     
     Serial.println("WiFi Connected in " + String(millis() - previousWifiTime) + " ms");
     Serial.println("IP address: ");

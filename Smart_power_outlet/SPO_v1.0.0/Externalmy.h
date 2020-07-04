@@ -28,6 +28,7 @@ class Externalmy {
     int _scrollAllowed = 1;
     
     void init(EEPROMmy* _mem);
+    void wifi(String wifi, String ip);
     void update();
     void power(int val);
     void loading();

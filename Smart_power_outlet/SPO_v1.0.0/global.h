@@ -5,6 +5,7 @@
 #include "Externalmy.h"
 #include "HTTPmy.h"
 #include "EEPROMmy.h"
+#include "MQTTmy.h"
 
 class global {
   private:
@@ -13,6 +14,7 @@ class global {
     HTTPmy http;
     Externalmy ext;
     EEPROMmy mem;
+    MQTTmy mqtt;
     
     void init();
 };

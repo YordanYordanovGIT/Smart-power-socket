@@ -9,7 +9,8 @@ class WiFimy {
   public:
     int wifiConnected = 1;
     String ip = "";
+    String wifiName = "";
 
-    void Setstation(char* wifi_Name, char* wifi_Pass);
+    void Setstation();
 };
 #endif

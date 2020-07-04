@@ -10,12 +10,14 @@ void setup() {
   Serial.begin(115200);
   g.init();
   g.ext.power(0);
-  //g.ext.dispText(g.mem.text, 0, 0, 1);
 }
 
 void loop() {
-  if(g.wifi.wifiConnected == 1)
+  if (g.wifi.wifiConnected == 1)
+  {
     g.http.update();
-  if(g.ext._scrollAllowed)
+    g.mqtt.update();
+  }
+  if (g.ext._scrollAllowed)
     g.ext.update();
 }
