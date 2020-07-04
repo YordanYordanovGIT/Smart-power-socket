@@ -7,6 +7,7 @@
 class MQTTmy {
   private:
     Externalmy ext;
+    EEPROMmy eep;
   public:
     void init(Externalmy external);
     void cmdt();

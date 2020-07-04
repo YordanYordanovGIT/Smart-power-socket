@@ -30,25 +30,26 @@ void MQTTmy::cmdt() {
  
     if (mqttClient.subscribe("/smartsocket1/ctrl")) {
       Serial.println("Subscribed");
-      
+      cmd = (int)message[0];
+    switch (cmd) {
+      case 'N': {
+          ext -> power(1);
+          break;
+        }
+      case 'F': {
+          ext -> power(0);
+          break;
+        }
+      case 'D': {
+       message = message.substring(1,message.length() - 1);
+       eep -> saveToMem(message);
+        }
+        }
     }
     else {
       Serial.println("Not subscribed");
     }
-    cmd = (int)message[0];
-    switch (cmd) {
-      case 'N': {
-          ext.power(1);
-          break;
-        }
-      case 'F': {
-          ext.power(0);
-          break;
-        }
-      case 'D': {
-       message = message.substring(1,message.length());
-        }
-        }
+    
 
 
   
