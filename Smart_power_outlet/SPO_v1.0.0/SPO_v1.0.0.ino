@@ -9,7 +9,6 @@ global g;
 void setup() {
   Serial.begin(115200);
   g.init();
-  g.ext.power(0);
 }
 
 void loop() {
