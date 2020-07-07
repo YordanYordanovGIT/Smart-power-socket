@@ -3,8 +3,8 @@
 
 #include <ESP8266WiFi.h>
 
-#define wifi_Name "milmar_mob"
-#define wifi_Pass "70000000"
+#define wifi_Name "TP-LINK_E42E"
+#define wifi_Pass "70893519"
 
 class WiFimy {
   private:

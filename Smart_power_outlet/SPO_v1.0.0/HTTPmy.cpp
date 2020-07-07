@@ -110,28 +110,30 @@ void HTTPmy::update()
 
 void HTTPmy::pageIndex(WiFiClient client, bool refresh)
 {
-  client.println("<!DOCTYPE html><html><head>");
-  client.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+  String request = "";
+  request += "<!DOCTYPE html><html><head>";
+  request += "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
   if(refresh)
-    client.println("<meta http-equiv=\"refresh\" content=\"0.5;URL=http://" + ip + "\"/>");
-  client.println("<style>");
-  client.println("html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}");
-  client.println(".btnSet { background-color: " + blue + "; border: none; color: " + white + "; padding: 10px 40px;");
-  client.println("text-decoration: none; font-size: 20px; margin: 2px; cursor: pointer;}");
+    request += "<meta http-equiv=\"refresh\" content=\"0.5;URL=http://" + ip + "\"/>";
+  request += "<style>";
+  request += "html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}";
+  request += ".btnSet { background-color: " + blue + "; border: none; color: " + white + "; padding: 10px 40px;";
+  request += "text-decoration: none; font-size: 20px; margin: 2px; cursor: pointer;}";
   if(ext->_power == 1)
-    client.println(".button { background-color:" + blue + "; border: none; color:" + white + "; padding: 10px 40px;");
+    request += ".button { background-color:" + blue + "; border: none; color:" + white + "; padding: 10px 40px;";
   else
-    client.println(".button { background-color: " + grey + "; border: none; color: " + black + "; padding: 10px 40px;");
-  client.println("text-decoration: none; font-size: 20px; margin: 2px; cursor: pointer;}");
-  client.println(".centered { vertical-align: middle; margin-right: 50px; }.displayText { vertical-align: middle; resize: none;}</style></head> ");    
-  client.println("<body style=\"background-color:#F4F6F6;\"><h1 style=\"color:#c47724;\">Smart power socket</h1>");
-  client.println("<form action=\"/set\" method=\"get\"><img src=\"https://image.flaticon.com/icons/svg/2922/2922379.svg\" alt=\"Socket image\" class=\"centered\" width=\"120\" height=\"120\">");
+    request += ".button { background-color: " + grey + "; border: none; color: " + black + "; padding: 10px 40px;";
+  request += "text-decoration: none; font-size: 20px; margin: 2px; cursor: pointer;}";
+  request += ".centered { vertical-align: middle; margin-right: 50px; }.displayText { vertical-align: middle; resize: none;}</style></head> ";    
+  request += "<body style=\"background-color:#F4F6F6;\"><h1 style=\"color:#c47724;\">Smart power socket</h1>";
+  request += "<form action=\"/set\" method=\"get\"><img src=\"https://image.flaticon.com/icons/svg/2922/2922379.svg\" alt=\"Socket image\" class=\"centered\" width=\"120\" height=\"120\">";
   if(ext->_power == 1)
-    client.println("<button type=\"submit\" name=\"OFF\" class=\"button\">ON</button><br><br></form><form action=\"/set\" method=\"get\">");
+    request += "<button type=\"submit\" name=\"OFF\" class=\"button\">ON</button><br><br></form><form action=\"/set\" method=\"get\">";
   else
-    client.println("<button type=\"submit\" name=\"ON\" class=\"button\">OFF</button><br><br></form><form action=\"/set\" method=\"get\">");
-  client.println("<textarea name=\"textarea\" class=\"displayText\" style=\"width:250px;height:150px;\">" + mem->text +"</textarea>");
-  client.println("<button type=\"submit\" class=\"btnSet\">Set</button></form></body></html>");
+    request += "<button type=\"submit\" name=\"ON\" class=\"button\">OFF</button><br><br></form><form action=\"/set\" method=\"get\">";
+  request += "<textarea name=\"textarea\" class=\"displayText\" style=\"width:250px;height:150px;\">" + mem->text +"</textarea>";
+  request += "<button type=\"submit\" class=\"btnSet\">Set</button></form></body></html>";
+  client.println(request);
 }
 
 String HTTPmy::UrlDecode(String str)
