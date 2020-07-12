@@ -7,6 +7,8 @@
 #include "EEPROMmy.h"
 #include "MQTTmy.h"
 
+//#define MQTT_ON
+
 class global {
   private:
   public:
@@ -14,7 +16,9 @@ class global {
     HTTPmy http;
     Externalmy ext;
     EEPROMmy mem;
+    #ifdef MQTT_ON
     MQTTmy mqtt;
+    #endif
     
     void init();
 };
