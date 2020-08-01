@@ -2,10 +2,10 @@
 
 void WiFimy::Setstation() {
   WiFi.mode(WIFI_STA);
-  WiFi.mode(WIFI_NONE_SLEEP);
   WiFi.begin(wifi_Name, wifi_Pass);
   WiFi.persistent(false);
   WiFi.setAutoConnect(false);
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
   WiFi.setAutoReconnect(true);
   previousWifiTime = millis();
   if (WiFi.waitForConnectResult() != WL_CONNECTED)
